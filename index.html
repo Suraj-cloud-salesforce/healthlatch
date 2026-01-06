@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Health:latch – Dummy Agent Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ================= INTERNAL CSS ================= -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", Arial, sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: #0f3c46;
+        }
+
+        /* ===== NAVBAR ===== */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-badge {
+            background: #ffeb3b;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: #0f3c46;
+            font-size: 14px;
+        }
+
+        .message-btn {
+            background: #ffeb3b;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 60px;
+            gap: 60px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 420px;
+        }
+
+        .image-bg {
+            position: absolute;
+            top: 40px;
+            left: -40px;
+            width: 420px;
+            height: 420px;
+            background: #0a7f8c;
+            border-radius: 24px;
+            z-index: 1;
+        }
+
+        .hero-img {
+            position: relative;
+            width: 420px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 24px;
+            z-index: 2;
+        }
+
+        .content {
+            max-width: 520px;
+        }
+
+        .content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            color: #0a7f8c;
+            margin-bottom: 24px;
+        }
+
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+            color: #3b5b63;
+        }
+
+        .primary-btn {
+            background: #ffeb3b;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ===== AGENT CONTAINER ===== */
+        #agent-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-img,
+            .image-bg {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+
+    <!-- ================= AGENTFORCE SCRIPT ================= -->
+    <!-- Replace this URL with your Salesforce Embedded Service / Agentforce URL -->
+    <script src="https://example.health.com/embeddedservice/agent.js" defer></script>
+
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="logo">
+        <div class="logo-badge">hl</div>
+        <strong>health:latch</strong>
+    </div>
+
+    <nav>
+        <a href="#">Start Here</a>
+        <a href="#">Biological Model</a>
+        <a href="#">About</a>
+        <a href="#">Resources</a>
+        <a href="#">Book</a>
+    </nav>
+
+    <button class="message-btn">MESSAGE US NOW</button>
+</header>
+  <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DWC000009pNOn',
+				'Service_agent_channel',
+				'https://business-velocity-6322--uat.sandbox.my.site.com/ESWServiceagentchannel1767680607889',
+				{
+					scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWServiceagentchannel1767680607889/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="image-wrapper">
+        <div class="image-bg"></div>
+        <img
+            class="hero-img"
+            src="https://images.unsplash.com/photo-1607746882042-944635dfe10e"
+            alt="Happy Child"
+        />
+    </div>
+
+    <div class="content">
+        <h1>
+            your child.<br />
+            your trust.<br />
+            our only focus.
+        </h1>
+
+        <p>
+            We are a biological pediatric oral wellness model for families
+            who want a different, kinder, and more intuitive dental experience
+            for children from infancy through age 12.
+        </p>
+
+        <button class="primary-btn">
+            Explore Our Biological Wellness Model
+        </button>
+    </div>
+</section>
+
+<!-- ===== AGENT MOUNT POINT ===== -->
+<div id="agent-container"></div>
+
+</body>
+</html>
