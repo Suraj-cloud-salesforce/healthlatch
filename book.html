@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f6faf9;
+      color: #2d3a3a;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 36px 40px;
+      border-radius: 14px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #2f6f6a;
+      font-size: 26px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #cfd8d6;
+      font-size: 14px;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #2f6f6a;
+      box-shadow: 0 0 0 2px rgba(47, 111, 106, 0.15);
+    }
+
+    .checkbox-group {
+      margin-top: 20px;
+    }
+
+    .checkbox-group label {
+      display: inline;
+      font-weight: normal;
+      margin-left: 6px;
+    }
+
+    small {
+      color: #6b7c7a;
+    }
+
+    .required {
+      color: #c0392b;
+    }
+
+    input[type="submit"] {
+      margin-top: 32px;
+      width: 100%;
+      background: #2f6f6a;
+      color: #ffffff;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background: #245b57;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e3ecea;
+      margin: 26px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Da500001ShllD" method="POST">
+
+  <!-- Required Salesforce fields -->
+  <input type="hidden" name="oid" value="00Da500001ShllD">
+  <input type="hidden" name="retURL" value="https://www.healthlatch.com/">
+
+  <!-- 🔒 Hidden enforced values -->
+  <input type="hidden" name="lead_source" value="Web">
+  <input type="hidden" name="Intake_Channel__c" value="Book Funnel">
+
+  <h2>Let’s Learn More About You</h2>
+
+  <p>
+    Share a few details below so we can better understand your child and
+    follow up with thoughtful, evidence-based resources.
+  </p>
+
+  <hr>
+
+  <!-- Name -->
+  <label for="first_name">
+    What is the Child's first name? <span class="required">*</span>
+  </label>
+  <input id="first_name" name="first_name" maxlength="40" type="text"
+         placeholder="e.g., Emma" required>
+
+  <label for="last_name">
+    Child's last name? <span class="required">*</span>
+  </label>
+  <input id="last_name" name="last_name" maxlength="80" type="text"
+         placeholder="e.g., Smith" required>
+
+  <!-- Email -->
+  <label for="email">
+    What’s the best email to share helpful resources with you?
+    <span class="required">*</span>
+  </label>
+  <input id="email" name="email" maxlength="80" type="text"
+         placeholder="e.g., Sophia@email.com" required>
+
+  <!-- Parent Name -->
+  <label for="00NVr00000ILIbE">
+    What name should we use when we reach out to you?
+	<span class="required">*</span>
+  </label>
+  <input id="00NVr00000ILIbE" name="00NVr00000ILIbE"
+         maxlength="255" type="text" placeholder="Sophia">
+
+  <!-- Record Type (VISIBLE) -->
+  <label for="recordType_display">
+	  What type of support are you looking for?
+	</label>
+
+	<!-- 👀 Visible but disabled -->
+	<select id="recordType_display" disabled>
+	  <option selected>
+		Person Lead – Book Intake
+	  </option>
+	</select>
+
+	<!-- 📩 Hidden field that actually submits to Salesforce -->
+	<input
+	  type="hidden"
+	  name="recordType"
+	  value="012Vr00000IorA6"
+	/>
+
+  <!-- Topic of Interest -->
+  <label for="00NVr00000ILIcL">
+    What brings you here today?
+  </label>
+  <select id="00NVr00000ILIcL" multiple="multiple" name="00NVr00000ILIcL">
+    <option value="book">Book Intake</option>
+    <option value="Sleep">Sleep concerns</option>
+    <option value="airway">Airway</option>
+    <option value="breathing">Breathing</option>
+    <option value="expertise">Looking for expertise</option>
+    <option value="a scientific explanation">Scientific explanation</option>
+    <option value="a clinical case story">Clinical case story</option>
+  </select>
+
+  <!-- Child Age -->
+  <label for="00NVr00000ILIZ4">
+    How old is your child?
+  </label>
+  <select id="00NVr00000ILIZ4" name="00NVr00000ILIZ4">
+    <option value="">-- Select age range --</option>
+    <option value="0 to 6 months">0 to 6 months</option>
+    <option value="6 to 24 Months">6 to 24 months</option>
+    <option value="2 to 5 Years">2 to 5 years</option>
+    <option value="6 to 12 Years">6 to 12 years</option>
+  </select>
+
+  <!-- Readiness -->
+  <label for="00NVr00000ILIbe">
+    How ready are you to get help right now?
+  </label>
+  <select id="00NVr00000ILIbe" name="00NVr00000ILIbe">
+    <option value="">-- Select one --</option>
+    <option value="Curious">Just exploring</option>
+    <option value="Learning">Looking to learn more</option>
+    <option value="Urgent">I need help soon</option>
+  </select>
+
+  <!-- Concern -->
+  <label for="00NVr00000ILIZ8">
+    What is your main concern about your child?
+  </label>
+  <select id="00NVr00000ILIZ8" name="00NVr00000ILIZ8">
+    <option value="">-- Select one --</option>
+    <option value="Sleep">Sleep</option>
+    <option value="Feeding">Feeding</option>
+    <option value="Airway">Breathing / Airway</option>
+    <option value="Growth">Growth</option>
+    <option value="Not sure">Not sure</option>
+  </select>
+
+  <!-- Description -->
+  <label for="00NVr00000ILIZV">
+    Please tell us more about your concern
+  </label>
+  <input id="00NVr00000ILIZV" name="00NVr00000ILIZV"
+         maxlength="255" type="text"
+         placeholder="Share anything you feel is important…">
+
+  <!-- Consent -->
+  <div class="checkbox-group">
+    <input id="00NVr00000ILIZA" name="00NVr00000ILIZA"
+           type="checkbox" value="1" required>
+    <label for="00NVr00000ILIZA">
+      Yes, you may contact me with helpful information and next steps.
+      <span class="required">*</span>
+    </label>
+    <br>
+    <small>We respect your privacy and will only reach out with relevant support.</small>
+  </div>
+
+  <input type="submit" name="submit" value="Submit">
+
+</form>
+</div>
+
+</body>
+</html>
