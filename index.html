@@ -163,7 +163,126 @@
         <a href="#">Book 123</a>
     </nav>
 
-    <button class="message-btn">MESSAGE US NOW</button>
+    <button class="message-btn">MESSAGE US NOW</button> 
+	<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  ----------------------------------------------------------------------  -->
+ 
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+ 
+<!--  ----------------------------------------------------------------------  -->
+<!--  Web-to-Lead Form : Media Intake                                        -->
+<!--  ----------------------------------------------------------------------  -->
+ 
+<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Da500001ShllD" method="POST">
+ 
+<!-- Required Salesforce values -->
+<input type="hidden" name="oid" value="00Da500001ShllD">
+<input type=hidden name="retURL" value="https://www.healthlatch.com/">
+ 
+<!-- Auto-population as per requirement -->
+<input type="hidden" name="lead_source" value="Web">
+<input type="hidden" name="Intake_Channel__c" value="Media Funnel">
+ 
+<!-- Debug (optional) -->
+<!--
+<input type="hidden" name="debug" value="1">
+<input type="hidden" name="debugEmail" value="ameya.dhuri@teqfocus.com">
+
+-->
+ 
+<!-- First Name (Mandatory) -->
+<label for="first_name">What First name should we use when we reach out to you?</label>
+<input id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+ 
+<!-- Last Name (Mandatory) -->
+<label for="last_name">What Last name should we use when we reach out to you?</label>
+<input id="last_name" maxlength="80" name="last_name" size="20" type="text" required /><br>
+ 
+<!-- Email (Mandatory + Format validation) -->
+<label for="email">What is the best email for us to share helpful resources with you?</label>
+<input id="email" maxlength="80" name="email" size="20" type="email" required /><br>
+ 
+<!-- Record Type -->
+<label for="recordType">Lead Record Type</label>
+<select id="recordType" name="recordType">
+<option value="">--None--</option>
+<option value="012Vr00000IorA8">Business Lead - Media Intake</option>
+<option value="012Vr00000IorA6">Person Lead - Book Intake</option>
+<option value="012Vr00000IorA7">Person Lead - Clinical Intake Lead</option>
+</select><br>
+ 
+<!-- Relationship to Patient -->
+<label for="00NVr00000ILIbl">What is your relationship to the patient?</label>
+<select id="00NVr00000ILIbl" name="00NVr00000ILIbl">
+<option value="">--None--</option>
+<option value="Parent">Parent</option>
+<option value="Guardian">Guardian</option>
+<option value="Other">Other</option>
+</select><br>
+ 
+<!-- Primary Concern -->
+<label for="00NVr00000ILIbY">What is the primary concern about your child?</label>
+<select id="00NVr00000ILIbY" name="00NVr00000ILIbY">
+<option value="">--None--</option>
+<option value="Sleep">Sleep</option>
+<option value="ENT">ENT</option>
+<option value="Feeding">Feeding</option>
+<option value="Learning">Learning</option>
+<option value="Behavior">Behavior</option>
+<option value="Other">Other</option>
+</select><br>
+ 
+<!-- Urgency -->
+<label for="00NVr00000ILIcR">How urgently do you want support?</label>
+<select id="00NVr00000ILIcR" name="00NVr00000ILIcR">
+<option value="">--None--</option>
+<option value="Low">Low</option>
+<option value="Medium">Medium</option>
+<option value="High">High</option>
+</select><br>
+ 
+<!-- Time Zone -->
+<label for="00NVr00000ILIcJ">Your preferred time to connect?</label>
+<select id="00NVr00000ILIcJ" name="00NVr00000ILIcJ">
+<option value="">--None--</option>
+<option value="Pacific Standard Time (PST)">Pacific Standard Time (PST)</option>
+<option value="Pacific Daylight Time (PDT)">Pacific Daylight Time (PDT)</option>
+<option value="(GMT-08:00) Pacific Time (US &amp; Canada)">
+
+    (GMT-08:00) Pacific Time (US &amp; Canada)
+</option>
+</select><br>
+ 
+<!-- Describe Concern -->
+<label for="00NVr00000ILIZV">In your own words, what are you looking for?</label>
+<input id="00NVr00000ILIZV" maxlength="255" name="00NVr00000ILIZV" size="20" type="text" /><br>
+ 
+<!-- Topic of Interest -->
+<label for="00NVr00000ILIcL">Select Topic of Interest</label>
+<select id="00NVr00000ILIcL" multiple="multiple" name="00NVr00000ILIcL">
+<option value="a scientific explanation">a scientific explanation</option>
+<option value="a clinical case story">a clinical case story</option>
+<option value="a wellness model discussion">a wellness model discussion</option>
+<option value="airway">airway</option>
+<option value="breathing">breathing</option>
+<option value="expertise">expertise</option>
+<option value="book">book</option>
+<option value="Sleep">Sleep</option>
+</select><br>
+ 
+<!-- Consent (Mandatory for Media Intake) -->
+<label for="00NVr00000ILIZA">
+
+  Can we follow up with you to help support your child? <strong>*</strong>
+</label>
+<input id="00NVr00000ILIZA" name="00NVr00000ILIZA" type="checkbox" value="1" required /><br>
+ 
+<input type="submit" name="submit">
+ 
+</form>
+
+ 
 </header>
 	<script type='text/javascript'>
 	function initEmbeddedMessaging() {
