@@ -1,181 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Teqfocus Health Cloud – Agent Test</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <title>Teqfocus Health Cloud – Agent Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Inter", Arial, sans-serif;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", Arial, sans-serif;
+    }
 
-        body {
-            background: #ffffff;
-            color: #0f3c46;
-        }
+    html, body {
+      height: 100%;
+    }
 
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 40px;
-            border-bottom: 1px solid #eee;
-            background: #fff;
-        }
+    body {
+      background: #ffffff;
+      color: #0f3c46;
+      margin: 0;
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        .logo img {
-            height: 42px;
-            width: auto;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-        nav a {
-            margin: 0 12px;
-            text-decoration: none;
-            color: #0f3c46;
-            font-size: 14px;
-        }
+    .logo img {
+      height: 42px;
+      width: auto;
+    }
 
-        .message-btn {
-            background: linear-gradient(135deg, #7b61ff, #b86cff);
-            color: #fff;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #0f3c46;
+      font-size: 14px;
+      font-weight: 500;
+    }
 
-        .hero {
-            min-height: 520px;
-            display: flex;
-            align-items: center;
-            padding: 80px 60px;
-            background: url("./TeqSechedular banner.jpg") center/cover no-repeat;
-            position: relative;
-            color: #fff;
-        }
+    .message-btn {
+      background: linear-gradient(135deg, #7b61ff, #b86cff);
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                90deg,
-                rgba(10, 20, 60, 0.7),
-                rgba(90, 50, 160, 0.5)
-            );
-        }
+    .hero {
+      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 60px;
+      background: url("https://suraj-cloud-salesforce.github.io/healthlatch/assets/TeqSechedular-banner.jpg") center/cover no-repeat;
+      position: relative;
+      color: #fff;
+    }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-        }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(10, 20, 60, 0.75),
+        rgba(90, 50, 160, 0.55)
+      );
+    }
 
-        .content h1 {
-            font-size: 46px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+    }
 
-        .content p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 26px;
-            color: #eaeaff;
-        }
+    .content h1 {
+      font-size: 48px;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
 
-        .primary-btn {
-            background: #ffffff;
-            color: #5a3ec8;
-            border: none;
-            padding: 14px 26px;
-            border-radius: 24px;
-            font-weight: 700;
-            cursor: pointer;
-        }
+    .content p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 26px;
+      color: #eaeaff;
+    }
 
-        #agent-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-        }
-    </style>
+    .primary-btn {
+      background: #ffffff;
+      color: #5a3ec8;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 24px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #agent-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 60px 24px;
+      }
+
+      .content h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
+  <header>
     <div class="logo">
-        <!-- Upload this image to your hosting and replace path -->
-        <img src="./Logo 2025 2.png" alt="Teqfocus Logo" />
-        <strong>Teqfocus Health Cloud</strong>
+      <img src="https://suraj-cloud-salesforce.github.io/healthlatch/assets/Logo-2025-2.png" alt="Teqfocus Logo" />
+      <strong>Teqfocus Health Cloud</strong>
     </div>
 
     <nav>
-        <a href="#">Start Here</a>
-        <a href="#">Solutions</a>
-        <a href="#">About</a>
-        <a href="#">Resources</a>
-        <a href="#">Contact</a>
+      <a href="#">Start Here</a>
+      <a href="#">Solutions</a>
+      <a href="#">About</a>
+      <a href="#">Resources</a>
+      <a href="#">Contact</a>
     </nav>
 
     <button class="message-btn">CHAT WITH US</button>
-</header>
+  </header>
 
-<script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US';
-			embeddedservice_bootstrap.init(
-				'00DWC000009pNOn',
-				'Github',
-				'https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847',
-				{
-					scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script
-  type='text/javascript'
-  src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js'
-  onload='initEmbeddedMessaging()'>
-</script>
+  <!-- Salesforce Embedded Messaging -->
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+        embeddedservice_bootstrap.init(
+          '00DWC000009pNOn',
+          'Github',
+          'https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847',
+          {
+            scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script
+    type='text/javascript'
+    src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js'
+    onload='initEmbeddedMessaging()'>
+  </script>
 
-<section class="hero">
+  <section class="hero">
     <div class="content">
-        <h1>
-            intelligent care.<br />
-            seamless coordination.<br />
-            powered by Teqfocus.
-        </h1>
+      <h1>
+        intelligent care.<br />
+        seamless coordination.<br />
+        powered by Teqfocus.
+      </h1>
 
-        <p>
-            Teqfocus Health Cloud helps healthcare organizations automate workflows,
-            connect teams, and deliver better patient engagement using AI-driven solutions.
-        </p>
+      <p>
+        Teqfocus Health Cloud helps healthcare organizations automate workflows,
+        connect teams, and deliver better patient engagement using AI-driven solutions.
+      </p>
 
-        <button class="primary-btn">
-            Explore Teqfocus Health Cloud
-        </button>
+      <button class="primary-btn">
+        Explore Teqfocus Health Cloud
+      </button>
     </div>
-</section>
+  </section>
 
-<div id="agent-container"></div>
+  <div id="agent-container"></div>
 
 </body>
 </html>
