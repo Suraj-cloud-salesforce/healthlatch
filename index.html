@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Health:latch – Dummy Agent Test</title>
+    <title>Teqfocus Health Cloud – Agent Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ================= INTERNAL CSS ================= -->
@@ -31,14 +31,13 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .logo-badge {
-            background: #ffeb3b;
-            padding: 8px 10px;
-            border-radius: 8px;
-            font-weight: 700;
+        .logo img {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
         }
 
         nav a {
@@ -140,52 +139,28 @@
             }
         }
     </style>
-
-    <!-- ================= AGENTFORCE SCRIPT ================= -->
-    <!-- Replace this URL with your Salesforce Embedded Service / Agentforce URL -->
-    <script src="https://example.health.com/embeddedservice/agent.js" defer></script>
-
 </head>
 <body>
 
 <!-- ===== HEADER ===== -->
 <header>
     <div class="logo">
-        <div class="logo-badge">hl</div>
-        <strong>health:latch</strong>
+        <!-- Replace src with your Teqfocus logo image -->
+        <img src="https://your-logo-url-here.png" alt="Teqfocus Logo" />
+        <strong>Teqfocus Health Cloud</strong>
     </div>
 
     <nav>
         <a href="#">Start Here</a>
-        <a href="#">Biological Model</a>
+        <a href="#">Solutions</a>
         <a href="#">About</a>
         <a href="#">Resources</a>
-        <a href="#">Book comment</a>
+        <a href="#">Contact</a>
     </nav>
 
-    <button class="message-btn">MESSAGE US NOW</button> 
-	
+    <button class="message-btn">CHAT WITH US</button> 
 </header>
 
-	<!-- <script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; 
- 
-			embeddedservice_bootstrap.init(
-				'00Da500001ShllD',
-				'Health_Latch',
-				'https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099',
-				{
-					scrt2URL: 'https://business-velocity-6322.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script type='text/javascript' src='https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>-->
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
@@ -206,7 +181,6 @@
 </script>
 <script type='text/javascript' src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
-	
 <!-- ===== HERO ===== -->
 <section class="hero">
     <div class="image-wrapper">
@@ -214,25 +188,24 @@
         <img
             class="hero-img"
             src="https://images.unsplash.com/photo-1607746882042-944635dfe10e"
-            alt="Happy Child"
+            alt="Healthcare Support"
         />
     </div>
 
     <div class="content">
         <h1>
-            your child.<br />
+            your care.<br />
             your trust.<br />
             our only focus.
         </h1>
 
         <p>
-            We are a biological pediatric oral wellness model for families
-            who want a different, kinder, and more intuitive dental experience
-            for children from infancy through age 15.
+            Teqfocus Health Cloud provides intelligent, AI-powered healthcare engagement
+            and care coordination solutions designed to simplify operations and improve outcomes.
         </p>
 
         <button class="primary-btn">
-            Explore Our Biological Wellness Model
+            Explore Teqfocus Health Cloud
         </button>
     </div>
 </section>
