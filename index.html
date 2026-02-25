@@ -1,201 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Teqfocus Health Cloud – Agent Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>Health:latch – Dummy Agent Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Inter", Arial, sans-serif;
-    }
+    <!-- ================= INTERNAL CSS ================= -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", Arial, sans-serif;
+        }
 
-    html, body {
-      height: 100%;
-    }
+        body {
+            background: #ffffff;
+            color: #0f3c46;
+        }
 
-    body {
-      background: #ffffff;
-      color: #0f3c46;
-      margin: 0;
-    }
+        /* ===== NAVBAR ===== */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px;
+            border-bottom: 1px solid #eee;
+        }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 40px;
-      border-bottom: 1px solid #eee;
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+        .logo-badge {
+            background: #ffeb3b;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
 
-    .logo img {
-      height: 42px;
-      width: auto;
-    }
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: #0f3c46;
+            font-size: 14px;
+        }
 
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #0f3c46;
-      font-size: 14px;
-      font-weight: 500;
-    }
+        .message-btn {
+            background: #ffeb3b;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-    .message-btn {
-      background: linear-gradient(135deg, #7b61ff, #b86cff);
-      color: #fff;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-    }
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 60px;
+            gap: 60px;
+        }
 
-    .hero {
-      min-height: 100vh;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 80px 60px;
-      background: url("https://suraj-cloud-salesforce.github.io/healthlatch/TeqSechedular%20banner.jpg") center/cover no-repeat;
-      position: relative;
-      color: #fff;
-    }
+        .image-wrapper {
+            position: relative;
+            width: 420px;
+        }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(10, 20, 60, 0.75),
-        rgba(90, 50, 160, 0.55)
-      );
-    }
+        .image-bg {
+            position: absolute;
+            top: 40px;
+            left: -40px;
+            width: 420px;
+            height: 420px;
+            background: #0a7f8c;
+            border-radius: 24px;
+            z-index: 1;
+        }
 
-    .content {
-      position: relative;
-      z-index: 2;
-      max-width: 620px;
-    }
+        .hero-img {
+            position: relative;
+            width: 420px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 24px;
+            z-index: 2;
+        }
 
-    .content h1 {
-      font-size: 48px;
-      line-height: 1.15;
-      margin-bottom: 22px;
-    }
+        .content {
+            max-width: 520px;
+        }
 
-    .content p {
-      font-size: 16px;
-      line-height: 1.7;
-      margin-bottom: 26px;
-      color: #eaeaff;
-    }
+        .content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            color: #0a7f8c;
+            margin-bottom: 24px;
+        }
 
-    .primary-btn {
-      background: #ffffff;
-      color: #5a3ec8;
-      border: none;
-      padding: 14px 26px;
-      border-radius: 24px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+            color: #3b5b63;
+        }
 
-    #agent-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-    }
+        .primary-btn {
+            background: #ffeb3b;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 24px;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-    @media (max-width: 900px) {
-      .hero {
-        padding: 60px 24px;
-      }
+        /* ===== AGENT CONTAINER ===== */
+        #agent-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
 
-      .content h1 {
-        font-size: 36px;
-      }
-    }
-  </style>
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-img,
+            .image-bg {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+
+    <!-- ================= AGENTFORCE SCRIPT ================= -->
+    <!-- Replace this URL with your Salesforce Embedded Service / Agentforce URL -->
+    <script src="https://example.health.com/embeddedservice/agent.js" defer></script>
+
 </head>
 <body>
 
-  <header>
+<!-- ===== HEADER ===== -->
+<header>
     <div class="logo">
-      <img src="https://suraj-cloud-salesforce.github.io/healthlatch/Logo%202025%202.png" alt="Teqfocus Logo" />
-      <strong>Teqfocus Health Cloud</strong>
+        <div class="logo-badge">hl</div>
+        <strong>health:latch</strong>
     </div>
 
     <nav>
-      <a href="#">Start Here</a>
-      <a href="#">Solutions</a>
-      <a href="#">About</a>
-      <a href="#">Resources</a>
-      <a href="#">Contact</a>
+        <a href="#">Start Here</a>
+        <a href="#">Biological Model</a>
+        <a href="#">About</a>
+        <a href="#">Resources</a>
+        <a href="#">Book comment</a>
     </nav>
 
-    <button class="message-btn">CHAT WITH US</button>
-  </header>
+    <button class="message-btn">MESSAGE US NOW</button> 
+	
+</header>
 
-  <!-- Salesforce Embedded Messaging -->
-  <script type='text/javascript'>
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'en_US';
-        embeddedservice_bootstrap.init(
-          '00DWC000009pNOn',
-          'Github',
-          'https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847',
-          {
-            scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
-          }
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-      }
-    };
-  </script>
-  <script
-    type='text/javascript'
-    src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js'
-    onload='initEmbeddedMessaging()'>
-  </script>
+	<!-- <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; 
+ 
+			embeddedservice_bootstrap.init(
+				'00Da500001ShllD',
+				'Health_Latch',
+				'https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099',
+				{
+					scrt2URL: 'https://business-velocity-6322.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>-->
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-  <section class="hero">
-    <div class="content">
-      <h1>
-        intelligent care.<br />
-        seamless coordination.<br />
-        powered by Teqfocus.
-      </h1>
+			embeddedservice_bootstrap.init(
+				'00DWC000009pNOn',
+				'Github',
+				'https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847',
+				{
+					scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
-      <p>
-        Teqfocus Health Cloud helps healthcare organizations automate workflows,
-        connect teams, and deliver better patient engagement using AI-driven solutions.
-      </p>
-
-      <button class="primary-btn">
-        Explore Teqfocus Health Cloud
-      </button>
+	
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="image-wrapper">
+        <div class="image-bg"></div>
+        <img
+            class="hero-img"
+            src="https://images.unsplash.com/photo-1607746882042-944635dfe10e"
+            alt="Happy Child"
+        />
     </div>
-  </section>
 
-  <div id="agent-container"></div>
+    <div class="content">
+        <h1>
+            your child.<br />
+            your trust.<br />
+            our only focus.
+        </h1>
+
+        <p>
+            We are a biological pediatric oral wellness model for families
+            who want a different, kinder, and more intuitive dental experience
+            for children from infancy through age 15.
+        </p>
+
+        <button class="primary-btn">
+            Explore Our Biological Wellness Model
+        </button>
+    </div>
+</section>
+
+<!-- ===== AGENT MOUNT POINT ===== -->
+<div id="agent-container"></div>
 
 </body>
 </html>
