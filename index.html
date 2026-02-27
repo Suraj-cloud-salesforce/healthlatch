@@ -180,7 +180,9 @@
 
 <!-- ================= SALESFORCE EMBEDDED MESSAGING ================= -->
 
-<script>
+<!-- ================= SALESFORCE EMBEDDED MESSAGING ================= -->
+
+<script type="text/javascript">
   function initEmbeddedMessaging() {
     try {
       embeddedservice_bootstrap.settings.language = 'en_US';
@@ -199,20 +201,14 @@
     }
   }
 
-  // 🔥 Auto open chat when ready
+  // 🔥 Auto-open chat when Salesforce Messaging is ready
   window.addEventListener("onEmbeddedMessagingReady", function () {
-
-      // Auto open ONLY once per session
-      if (!sessionStorage.getItem("chatOpened")) {
-          embeddedservice_bootstrap.open();
-          sessionStorage.setItem("chatOpened", "true");
-      }
-
+      embeddedservice_bootstrap.open();
   });
-
 </script>
 
 <script
+  type="text/javascript"
   src="https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js"
   onload="initEmbeddedMessaging()">
 </script>
