@@ -215,6 +215,8 @@
 <!-- ================= SALESFORCE EMBEDDED MESSAGING ================= -->
 
 <script>
+  let teaser;
+
   function initEmbeddedMessaging() {
     try {
       embeddedservice_bootstrap.settings.language = 'en_US';
@@ -233,31 +235,43 @@
     }
   }
 
-  // When Messaging is fully ready
+  // When Messaging is ready
   window.addEventListener("onEmbeddedMessagingReady", () => {
 
-      // Small delay to ensure launcher is rendered
       setTimeout(() => {
 
-          const teaser = document.createElement("div");
+          teaser = document.createElement("div");
           teaser.id = "chatTeaser";
           teaser.innerHTML = "Came for onboarding? Start here 👋";
 
           document.body.appendChild(teaser);
 
           teaser.addEventListener("click", function () {
-              teaser.style.display = "none";
-
-              // Recommended open method for Agentforce
-              if (embeddedservice_bootstrap.utilAPI) {
-                  embeddedservice_bootstrap.utilAPI.launchChat();
-              } else {
-                  embeddedservice_bootstrap.open();
-              }
+              hideTeaser();
+              openChat();
           });
 
       }, 1500);
   });
+
+  // 🔥 When conversation actually starts → hide teaser
+  window.addEventListener("onEmbeddedMessagingConversationStarted", function () {
+      hideTeaser();
+  });
+
+  function openChat() {
+      if (embeddedservice_bootstrap.utilAPI) {
+          embeddedservice_bootstrap.utilAPI.launchChat();
+      } else {
+          embeddedservice_bootstrap.open();
+      }
+  }
+
+  function hideTeaser() {
+      if (teaser) {
+          teaser.style.display = "none";
+      }
+  }
 </script>
 
 <script
