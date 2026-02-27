@@ -235,7 +235,6 @@
     }
   }
 
-  // When Messaging is ready
   window.addEventListener("onEmbeddedMessagingReady", () => {
 
       setTimeout(() => {
@@ -247,19 +246,15 @@
           document.body.appendChild(teaser);
 
           teaser.addEventListener("click", function () {
-              hideTeaser();
               openChat();
           });
 
       }, 1500);
   });
 
-  // 🔥 When conversation actually starts → hide teaser
-  window.addEventListener("onEmbeddedMessagingConversationStarted", function () {
-      hideTeaser();
-  });
-
   function openChat() {
+      hideTeaser();
+
       if (embeddedservice_bootstrap.utilAPI) {
           embeddedservice_bootstrap.utilAPI.launchChat();
       } else {
@@ -269,9 +264,22 @@
 
   function hideTeaser() {
       if (teaser) {
-          teaser.style.display = "none";
+          teaser.remove();   // stronger than display:none
       }
   }
+
+  // 🔥 Detect when chat launcher is clicked
+  document.addEventListener("click", function (e) {
+      const launcher = document.querySelector("embeddedservice-messaging-launcher");
+      if (launcher && launcher.contains(e.target)) {
+          hideTeaser();
+      }
+  });
+
+  // 🔥 Fallback: hide if conversation state changes
+  window.addEventListener("onEmbeddedMessagingConversationStarted", hideTeaser);
+  window.addEventListener("onEmbeddedMessagingConversationOpened", hideTeaser);
+
 </script>
 
 <script
