@@ -126,42 +126,9 @@
                 width: 300px;
                 height: 300px;
             }
-        } 
-
-        #chatTeaser {
-    position: fixed;
-    right: 28px;
-    bottom: 110px;
-    background: #0a7f8c;
-    color: #ffffff;
-    padding: 12px 18px;
-    border-radius: 22px;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    cursor: pointer;
-    z-index: 999999;
-    max-width: 260px;
-    text-align: center;
-    animation: fadeInUp 0.4s ease;
-}
-
-/* Arrow pointer */
-#chatTeaser::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    right: 20px;
-    border-width: 8px;
-    border-style: solid;
-    border-color: #0a7f8c transparent transparent transparent;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        }  
     </style>
+    
 </head>
 
 <body>
@@ -214,78 +181,26 @@
 
 <!-- ================= SALESFORCE EMBEDDED MESSAGING ================= -->
 
-<script>
-  let teaser;
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-  function initEmbeddedMessaging() {
-    try {
-      embeddedservice_bootstrap.settings.language = 'en_US';
-
-      embeddedservice_bootstrap.init(
-        '00DWC000009pNOn',
-        'Github',
-        'https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847',
-        {
-          scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
-        }
-      );
-
-    } catch (err) {
-      console.error('Error loading Embedded Messaging:', err);
-    }
-  }
-
-  window.addEventListener("onEmbeddedMessagingReady", () => {
-
-      setTimeout(() => {
-
-          teaser = document.createElement("div");
-          teaser.id = "chatTeaser";
-          teaser.innerHTML = "Came for onboarding? Start here 👋";
-
-          document.body.appendChild(teaser);
-
-          teaser.addEventListener("click", function () {
-              openChat();
-          });
-
-      }, 1500);
-  });
-
-  function openChat() {
-      hideTeaser();
-
-      if (embeddedservice_bootstrap.utilAPI) {
-          embeddedservice_bootstrap.utilAPI.launchChat();
-      } else {
-          embeddedservice_bootstrap.open();
-      }
-  }
-
-  function hideTeaser() {
-      if (teaser) {
-          teaser.remove();   // stronger than display:none
-      }
-  }
-
-  // 🔥 Detect when chat launcher is clicked
-  document.addEventListener("click", function (e) {
-      const launcher = document.querySelector("embeddedservice-messaging-launcher");
-      if (launcher && launcher.contains(e.target)) {
-          hideTeaser();
-      }
-  });
-
-  // 🔥 Fallback: hide if conversation state changes
-  window.addEventListener("onEmbeddedMessagingConversationStarted", hideTeaser);
-  window.addEventListener("onEmbeddedMessagingConversationOpened", hideTeaser);
-
+			embeddedservice_bootstrap.init(
+				'00DWC000009pNOn',
+				'Github',
+				'https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847',
+				{
+					scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
 </script>
+<script type='text/javascript' src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
-<script
-  src="https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js"
-  onload="initEmbeddedMessaging()">
-</script>
 
 </body>
 </html>
