@@ -187,7 +187,7 @@
 </script>
 <script type='text/javascript' src='https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>-->
 
-<script type='text/javascript'>
+<!--<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
@@ -205,9 +205,51 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>-->
 
+<script>
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'en_US';
 
+      embeddedservice_bootstrap.init(
+        '00DWC000009pNOn',
+        'Github',
+        'https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847',
+        {
+          scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
+        }
+      );
+
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  }
+
+  // When Salesforce Messaging is fully ready
+  window.addEventListener("onEmbeddedMessagingReady", () => {
+
+      // OPTIONAL: If you want full auto-open on page load
+      // embeddedservice_bootstrap.open();
+
+      // Create teaser bubble
+      const teaser = document.createElement("div");
+      teaser.id = "chatTeaser";
+      teaser.innerHTML = "Came for onboarding? Start here 👋";
+
+      document.body.appendChild(teaser);
+
+      teaser.addEventListener("click", function () {
+          teaser.style.display = "none";
+          embeddedservice_bootstrap.open();
+      });
+
+  });
+</script>
+
+<script src="https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js"
+        onload="initEmbeddedMessaging()">
+</script>
 	
 	
 <!-- ===== HERO ===== -->
