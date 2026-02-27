@@ -201,14 +201,25 @@
     }
   }
 
-  // 🔥 Auto-open chat when Salesforce Messaging is ready
   window.addEventListener("onEmbeddedMessagingReady", function () {
-      embeddedservice_bootstrap.open();
+
+      console.log("Messaging Ready Fired");
+
+      setTimeout(function () {
+          console.log("Attempting to open chat...");
+          
+          if (window.embeddedservice_bootstrap) {
+              embeddedservice_bootstrap.openChat();
+          } else {
+              console.error("embeddedservice_bootstrap not found");
+          }
+
+      }, 3000);
+
   });
 </script>
 
 <script
-  type="text/javascript"
   src="https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js"
   onload="initEmbeddedMessaging()">
 </script>
