@@ -188,6 +188,8 @@
 <script type='text/javascript' src='https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>-->
 
 <script>
+  let hasAutoOpened = false;
+
   function initEmbeddedMessaging() {
     try {
       embeddedservice_bootstrap.settings.language = 'en_US';
@@ -206,21 +208,31 @@
     }
   }
 
-  // ✅ Auto-open chat when messaging is ready
+  // 🔥 Auto open ONLY once per page load
   window.addEventListener("onEmbeddedMessagingReady", function () {
 
-      // small delay ensures launcher fully renders
-      setTimeout(function () {
+      if (!hasAutoOpened) {
 
-          if (embeddedservice_bootstrap.utilAPI) {
-              embeddedservice_bootstrap.utilAPI.launchChat();
-          } else {
-              embeddedservice_bootstrap.open();
-          }
+          hasAutoOpened = true;
 
-      }, 1000);
+          setTimeout(function () {
+
+              if (embeddedservice_bootstrap.utilAPI) {
+                  embeddedservice_bootstrap.utilAPI.launchChat();
+              } else {
+                  embeddedservice_bootstrap.open();
+              }
+
+          }, 1000);
+      }
 
   });
+
+  // 🔥 If user closes chat → prevent any future auto-open
+  window.addEventListener("onEmbeddedMessagingWindowClosed", function () {
+      hasAutoOpened = true;
+  });
+
 </script>
 
 <script
