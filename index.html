@@ -183,44 +183,39 @@
 <!-- ================= SALESFORCE EMBEDDED MESSAGING ================= -->
 
 <script type="text/javascript">
+  // ✅ Register the listener BEFORE init()
+  window.addEventListener("onEmbeddedMessagingReady", function () {
+    try {
+      // Recommended API to open Messaging / Agentforce chat
+      embeddedservice_bootstrap.utilAPI.launchChat();
+      // If you want to see it's firing:
+      console.log("Embedded Messaging ready → launching chat");
+    } catch (e) {
+      console.error("Failed to auto-launch chat:", e);
+    }
+  });
+ 
   function initEmbeddedMessaging() {
     try {
-      embeddedservice_bootstrap.settings.language = 'en_US';
-
+      embeddedservice_bootstrap.settings.language = "en_US";
+ 
       embeddedservice_bootstrap.init(
-        '00DWC000009pNOn',
-        'Github',
-        'https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847',
+        "00DWC000009pNOn",
+        "Github",
+        "https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847",
         {
-          scrt2URL: 'https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com'
+          scrt2URL: "https://business-velocity-6322--uat.sandbox.my.salesforce-scrt.com"
         }
       );
-
     } catch (err) {
-      console.error('Error loading Embedded Messaging: ', err);
+      console.error("Error loading Embedded Messaging: ", err);
     }
   }
-
-  window.addEventListener("onEmbeddedMessagingReady", function () {
-
-      console.log("Messaging Ready Fired");
-
-      setTimeout(function () {
-          console.log("Attempting to open chat...");
-          
-          if (window.embeddedservice_bootstrap) {
-              embeddedservice_bootstrap.openChat();
-          } else {
-              console.error("embeddedservice_bootstrap not found");
-          }
-
-      }, 3000);
-
-  });
 </script>
-
+ 
 <script
-  src="https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js"
+  type="text/javascript"
+  src="https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js%22
   onload="initEmbeddedMessaging()">
 </script>
 
