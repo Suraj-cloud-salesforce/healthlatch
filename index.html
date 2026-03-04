@@ -187,7 +187,7 @@
 </script>
 <script type='text/javascript' src='https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>-->
 
-<script>
+<!--<script>
   let hasAutoOpened = false;
 
   function initEmbeddedMessaging() {
@@ -238,10 +238,65 @@
 <script
   src="https://business-velocity-6322--uat.sandbox.my.site.com/ESWGithub1767696009847/assets/js/bootstrap.min.js"
   onload="initEmbeddedMessaging()">
+</script> --> 
+
+<script>
+  let hasAutoOpened = false;
+
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'en_US';
+
+      embeddedservice_bootstrap.init(
+        '00Da500001ShllD', // ✅ Production Org ID
+        'Health_Latch',   // ✅ Production Deployment Name
+        'https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099',
+        {
+          scrt2URL: 'https://business-velocity-6322.my.salesforce-scrt.com'
+        }
+      );
+
+    } catch (err) {
+      console.error('Error loading Embedded Messaging:', err);
+    }
+  }
+
+  // 🔥 Auto open ONLY once per page load
+  window.addEventListener("onEmbeddedMessagingReady", function () {
+
+      if (!hasAutoOpened) {
+
+          hasAutoOpened = true;
+
+          setTimeout(function () {
+
+              if (embeddedservice_bootstrap.utilAPI) {
+                  embeddedservice_bootstrap.utilAPI.launchChat();
+              } else {
+                  embeddedservice_bootstrap.open();
+              }
+
+          }, 1000);
+      }
+
+  });
+
+  // 🔥 If user closes chat → prevent future auto-open
+  window.addEventListener("onEmbeddedMessagingWindowClosed", function () {
+      hasAutoOpened = true;
+  });
+
 </script>
+
+<script
+  src="https://business-velocity-6322.my.site.com/ESWHealthLatch1770115524099/assets/js/bootstrap.min.js"
+  onload="initEmbeddedMessaging()">
+</script>
+
+
+    
 </style>
-      
-      
+        
 <!-- ===== HERO ===== -->
 <section class="hero">
     <div class="image-wrapper">
